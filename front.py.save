@@ -1,0 +1,15 @@
+import pandas as pd
+import plotly.graph_objects as go
+
+import dash
+import dash_core_components as dcc
+import dash_html_components as html
+
+url = "http://172.31.94.205:5000/mostrarEstacionesNivel?pass=orlios"
+data = pd.read_json(url, convert_dates='True')
+
+lat = []
+lon = []
+zr = []
+
+for i in range(0, 100)
