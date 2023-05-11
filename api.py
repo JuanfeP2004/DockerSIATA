@@ -1,10 +1,6 @@
 import flask
 import pandas as pd
 
-#url = "http://siata.gov.co:8089/estacionesNivel/cf7bb09b4d7d859a2840e22c3f3a9a8039917cc3/?format=json"
-
-#capturaWeb = pd.read_json(url, convert_dates=True)
-
 app = flask.Flask(__name__)
 
 @app.route('/mostrarEstacionesNivel')
