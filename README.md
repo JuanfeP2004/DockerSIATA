@@ -43,7 +43,7 @@ Las tecnologias usadas para la aplicacion son las siguientes:
 **Importante:** a la hora de instalar el servidor el archivo **front.py** esta configurado para que su url este en el **localhost**, esto da problemas
 a la hora de correr el contenedor del front, por lo cual se debe donde dice localhost reemplazarlo por la Ip privada del servidor.  
 
-Para clonar la carpeta del proyecto en el servidor ubuntu se hace de lo siguiente:
+Para clonar la carpeta del proyecto en el servidor ubuntu se hace lo siguiente:
 
 ```
 $ sudo apt update
@@ -108,7 +108,7 @@ La aplicacion consiste en una pagina dash, esta pagina contiene dos layout: uno 
 contiene un mapa en el cual se muestran las estaciones del SIATA, el cual se hizo mediante unas listas en donde estan las coordenadas y el nivel del cauce, este
 material se obtuvo mediante la funcion de **read_json** de la libreria de pandas, cuya url es precisamente la Ip privada del servidor por el puerto en
 que se abrio la pagina del contenedor de la api (puerto 5000), luego la funcion de **update_output** tiene la funcionalidad de mostrar el mapa dependiendo de si los input
-del usuario y la contraseña coinciden con un item del diccionario de usuarios y para finalizar el callback de la app tiene el input del formulario (el boton), los estados
+del usuario y la contraseña coinciden con un item del diccionario de usuarios y para finalizar el **callback** de la app tiene el input del formulario (el boton), los estados
 (las cajas de textos) y el output (un Div puesto en el formulario donde se puede mostrar el mapa o un mensaje de error) que varia dependiendo de la funcion anterior.  
 
 Por parte de la Api el codigo es hecho en una pagina de flask, el codigo consiste en una funcion en la que se lee
