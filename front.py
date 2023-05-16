@@ -60,6 +60,7 @@ mapa = html.Div([
 def update_output(n_clicks, usuario, contrasenia):
     if (usuario in usuarios and contrasenia == usuarios[usuario]):
         return mapa
+    elif (n_clicks == 0): return None
     else: return "Usuario o contraseña incorrecto"
 
 # Donde se corre el servidor
