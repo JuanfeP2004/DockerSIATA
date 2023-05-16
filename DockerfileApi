@@ -7,4 +7,4 @@ COPY api.py .
 COPY requirementsApi.txt .
 RUN pip3 install -r requirementsApi.txt
 CMD ["python3.10", "api.py"]
-
+VOLUME /datos

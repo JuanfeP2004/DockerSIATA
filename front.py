@@ -6,15 +6,16 @@ import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Output, Input, State
 
-url = "http://172.31.94.205:5000/mostrarEstacionesNivel?pass=orlios"
+url = "http://localhost:5000/mostrarEstacionesNivel?pass=orlios"
 data = pd.read_json(url, convert_dates='True')
 
 latA = []
 lonA = []
 zA = []
 
-# Contraseñas
+# App y las Contraseñas
 
+app = dash.Dash()
 usuarios = {"admin":"root", "user":"pass01"}
 
 # Plantilla del login
@@ -24,12 +25,11 @@ form = html.Div([
     html.Br(),
     "Ingrese el usuario: ",
     dcc.Input(id="usuario", type="text"),
-    html.Br(),
     "Ingrese la contraseña: ",
     dcc.Input(id="contrasenia", type="text"),
-    html.Br(),
+    html.Hr(),
     html.Button("Ingresar", id="ingresar", type="submit", n_clicks=0),
-    html.Br(),
+    html.Hr(),
     html.Div(id="login")
     ])
 
@@ -45,13 +45,8 @@ fig.update_layout(mapbox_style="stamen-terrain", mapbox_center_lon=-75.589, mapb
 fig.update_layout(margin={"r":0, "t":0, "l":0, "b":0})
 
 mapa = html.Div([
-            html.H1("Control de cauce en Medellin"),
             dcc.Graph(figure=fig)
             ])
-
-app = dash.Dash()
-
-app.layout = form
 
 # Zona del callback, donde se obtiene la interaccion con el formulario
 
@@ -64,8 +59,10 @@ app.layout = form
 
 def update_output(n_clicks, usuario, contrasenia):
     if (usuario in usuarios and contrasenia == usuarios[usuario]):
-        app.layout = mapa
-        return None
+        return mapa
     else: return "Usuario o contraseña incorrecto"
 
+# Donde se corre el servidor
+
+app.layout = form
 app.run_server(host='0.0.0.0', port=80)

@@ -7,3 +7,4 @@ COPY front.py .
 COPY requirementsFront.txt .
 RUN pip3 install -r requirementsFront.txt
 CMD ["python3.10", "front.py"]
+VOLUME /datos
